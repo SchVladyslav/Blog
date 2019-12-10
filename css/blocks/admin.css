@@ -1,5 +1,5 @@
 /* Global Styles */
-.admin-button {
+.button__post {
   width: 100px;
   padding: 15px 20px;
 
@@ -12,7 +12,7 @@
   border: transparent;
 }
 
-.admin-button:hover {
+.button__post:hover {
   background-color: #1a91da;
   cursor: pointer;
 }
@@ -357,3 +357,13 @@
 }
 
 /* /Suggestions */
+
+/* Modal */
+
+.add-post--closed {
+  display: none;
+}
+
+.add-post {
+  width: 20vw;
+}
