@@ -13,35 +13,35 @@
     <div class="container">
       <main class="main">
         <div class="logo"></div>
-        <h1 class="main__title">Log In</h1>
+        <h1 class="main__title">Log In</h1>        
+        <div class="alert alert__error"></div>
         <form class="main__form" action="" method="POST">
           <div class="main__icon-wrap">
             <i class="icon icon-lock main__icon"></i>
             <input
-              class="input"
+              class="input input__email"
               type="email"
               name="email"
               placeholder="E-mail"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               required
             />
           </div>
           <div class="main__icon-wrap">
             <i class="icon icon-user main__icon"></i>
             <input
-              class="input"
+              class="input input__password"
               type="password"
               name="password"
               placeholder="Password"
-              maxlength="8"
               required
             />
           </div>
-          <button class="button" type="submit">Login</button>
+          <button class="button button__login" type="submit" disabled>Login</button>
         </form>
         <p class="hint">Forgot Password?</p>
       </main>
     </div>
-    <script src="app.js"></script>
+
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>
