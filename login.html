@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/icons/favicon.ico" />
+  </head>
+
+  <body>
+    <div class="container">
+      <main class="main">
+        <div class="logo"></div>
+        <h1 class="main__title">Log In</h1>
+        <form class="main__form" action="" method="POST">
+          <div class="main__icon-wrap">
+            <i class="icon icon-lock main__icon"></i>
+            <input
+              class="input"
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              required
+            />
+          </div>
+          <div class="main__icon-wrap">
+            <i class="icon icon-user main__icon"></i>
+            <input
+              class="input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              maxlength="8"
+              required
+            />
+          </div>
+          <button class="button" type="submit">Login</button>
+        </form>
+        <p class="hint">Forgot Password?</p>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

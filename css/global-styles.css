@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  color: #fff;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: no-repeat center/cover url("../../img/bg-01.jpg");
+}
+
+body:before {
+  content: "";
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: -1;
+}
+
+.admin {
+  display: flex;
+  justify-content: center;
+
+  max-width: 1540px;
+
+  color: #14171a;
+  font-weight: bold;
+}
+
+input {
+  outline: transparent;
+  border: transparent;
+}
