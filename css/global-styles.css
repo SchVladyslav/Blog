@@ -33,8 +33,6 @@ body:before {
   display: flex;
   justify-content: center;
 
-  max-width: 1540px;
-
   color: #14171a;
   font-weight: bold;
 }
@@ -42,4 +40,22 @@ body:before {
 input {
   outline: transparent;
   border: transparent;
+}
+
+.alert {
+  width: 100%;
+  padding: 10px;
+
+  font-size: 16px;
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.alert__error {
+  color: rgb(143, 38, 69);
+}
+
+.alert__error strong {
+  color: rgb(143, 38, 69);
 }
