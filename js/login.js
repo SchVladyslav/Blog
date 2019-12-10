@@ -7,8 +7,8 @@ export default class Login {
 
         this.userEmail = 'user@gmail.com';
         this.adminEmail = 'admin@gmail.com';
-        this.adminPass = '11';
-        this.userPass = '22';
+        this.adminPass = '11111111';
+        this.userPass = '22222222';
 
         this.emailChecked = false;
         this.passChecked = false;
