@@ -1,9 +1,15 @@
 import Login from './login.js';
+import Admin from './admin.js';
 
 class App {
+  constructor() {
+    this.login = new Login();
+    this.admin = new Admin(); 
+  }
+
   start() {
-    const login = new Login();
-    login.init();
+    this.login.init();
+    this.admin.showDialog();
   }
 }
 
