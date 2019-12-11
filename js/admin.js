@@ -13,13 +13,19 @@ class Admin {
     this.postID = 0;
   }
 
+  clearPosts() {
+    this.postsList.innerHTML = "";
+  }
+
   addPost() {
+    this.clearPosts();
     const value = this.post.value;
 
     if (value.length) {
       let post = {
         id: this.postID,
-        text: value
+        text: value,
+        date: new Date().getHours()
       };
       this.postID++;
       this.addPostToLocalStorage(post);
@@ -41,6 +47,18 @@ class Admin {
     return posts;
   }
 
+  deletePostFromLocalStorage(item) {
+    const postsList = this.getPostsFromLocalStorage() || [];
+    if (postsList.length) {
+      let result = postsList.filter(elem => elem === item);
+      let index = postsList.indexOf(result);
+      if (index > -1) {
+        postsList.splice(index, 1);
+        localStorage.setItem("posts", JSON.stringify(postsList));
+      }
+    }
+  }
+
   displayPosts() {
     const postsList = this.getPostsFromLocalStorage();
     postsList.forEach(item => {
@@ -58,11 +76,11 @@ class Admin {
     <div class="content-wrap">
       <div class="item__title">
         <div class="item__title-wrap">
-            <h3 class="item__name">SpaceX</h3>
-            <p class="item__username">@SpaceX</p>
-            <span class="item__time">22h</span>
+            <h3 class="item__name">Barack Obama</h3>
+            <p class="item__username">@BarackObama</p>
+            <span class="item__time">${item.date}h</span>
         </div>
-        <button type="button" class="item__btn" type="button">Delete</button>
+        <button type="button" class="item__btn item__delete" type="button">Delete</button>
       </div>
       <p class="item__desc">
         ${item.text}
@@ -92,11 +110,13 @@ class Admin {
     return markup;
   }
 
-  deletePost(id) {
-    //const itemBtn = document.querySelector(".item__btn");
-
-    const item = document.querySelector(`[data-id='${id}']`);
-    if (item) item.parentElement.removeChild(item);
+  deletePost(evt) {
+    const id = evt.target.closest(".posts__item").dataset.dataid;
+    if (evt.target.matches(".item__delete, .item__delete *")) {
+      const item = document.querySelector(`[data-id='${id}']`);
+      if (item) item.parentElement.removeChild(item);
+      this.deletePostFromLocalStorage(item);
+    }
     //this.displayPosts();
   }
 
@@ -131,6 +151,7 @@ class Admin {
 function eventListeners() {
   const messageForm = document.querySelector(".message__form");
   const navPostBtn = document.querySelector(".nav__btn-post");
+  const postsList = document.querySelector(".posts__list");
 
   const admin = new Admin();
 
@@ -142,6 +163,11 @@ function eventListeners() {
   navPostBtn.addEventListener("click", evt => {
     evt.preventDefault();
     admin.showDialog();
+  });
+
+  postsList.addEventListener("click", evt => {
+    evt.preventDefault();
+    admin.deletePost(evt);
   });
 }
 
