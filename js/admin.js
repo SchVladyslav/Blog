@@ -10,11 +10,14 @@ class Admin {
 
     this.post = this.messageForm.querySelector("[name=post]");
     this.postsList = document.querySelector(".posts__list");
-    this.postID = 0;
   }
 
   clearPosts() {
     this.postsList.innerHTML = "";
+  }
+
+  uniqueID() {
+    return `f${(~~(Math.random() * 1e8)).toString(32)}`;
   }
 
   addPost() {
@@ -23,11 +26,10 @@ class Admin {
 
     if (value.length) {
       let post = {
-        id: this.postID,
+        id: this.uniqueID(),
         text: value,
         date: new Date().getHours()
       };
-      this.postID++;
       this.addPostToLocalStorage(post);
     }
     this.post.value = "";
@@ -47,26 +49,12 @@ class Admin {
     return posts;
   }
 
-  deletePostFromLocalStorage(item) {
-    const postsList = this.getPostsFromLocalStorage() || [];
-    if (postsList.length) {
-      let result = postsList.filter(elem => elem === item);
-      let index = postsList.indexOf(result);
-      if (index > -1) {
-        postsList.splice(index, 1);
-        localStorage.setItem("posts", JSON.stringify(postsList));
-      }
-    }
-  }
-
   displayPosts() {
     const postsList = this.getPostsFromLocalStorage();
     postsList.forEach(item => {
       const markup = this.preparePost(item);
       this.postsList.insertAdjacentHTML("afterbegin", markup);
     });
-
-    //this.deletePost();
   }
 
   preparePost(item) {
@@ -111,13 +99,20 @@ class Admin {
   }
 
   deletePost(evt) {
-    const id = evt.target.closest(".posts__item").dataset.dataid;
+    const id = evt.target.closest(".posts__item").dataset.id;
     if (evt.target.matches(".item__delete, .item__delete *")) {
       const item = document.querySelector(`[data-id='${id}']`);
-      if (item) item.parentElement.removeChild(item);
-      this.deletePostFromLocalStorage(item);
+      if (item) item.parentElement.removeChild(item); // li
+      this.deletePostFromLocalStorage(id);
     }
-    //this.displayPosts();
+  }
+
+  deletePostFromLocalStorage(id) {
+    let postsList = this.getPostsFromLocalStorage();
+    if (postsList.length) {
+      postsList = postsList.filter(item => item.id != id);
+      localStorage.setItem("posts", JSON.stringify(postsList));
+    }
   }
 
   showDialog() {
@@ -172,5 +167,6 @@ function eventListeners() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  new Admin().displayPosts();
   eventListeners();
 });
