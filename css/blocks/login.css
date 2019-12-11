@@ -109,8 +109,9 @@
   color: #fff;
 }
 
-.button::placeholder() {
-  color: #fff;
+.button:disabled.button:hover {
+  color: #555555;
+  background: #fff;
 }
 
 .hint {

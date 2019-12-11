@@ -1,15 +1,12 @@
-import Login from './login.js';
-import Admin from './admin.js';
+import Login from "./login.js";
 
 class App {
   constructor() {
     this.login = new Login();
-    this.admin = new Admin(); 
   }
 
   start() {
     this.login.init();
-    this.admin.showDialog();
   }
 }
 

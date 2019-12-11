@@ -120,6 +120,7 @@
   cursor: pointer;
 }
 
+.modal-close,
 .actions__item .icon {
   width: 35px;
   height: 35px;
@@ -127,6 +128,7 @@
   transition: 0.2s ease all;
 }
 
+.modal-close:hover,
 .actions__item .icon:hover {
   border-radius: 50%;
   background-color: #e8f5fe;
@@ -360,10 +362,88 @@
 
 /* Modal */
 
-.add-post--closed {
+.modal {
+  position: fixed;
+
   display: none;
+
+  color: #000000;
+
+  background-color: #fff;
 }
 
-.add-post {
-  width: 20vw;
+.modal-post {
+  top: 45px;
+  left: 50%;
+
+  width: 39vw;
+  margin-left: -230px; /*Для центрування модального вікна*/
+  /* padding: 10px 20px; */
+
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.modal-wrap {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+  70% {
+    transform: translateY(30px);
+  }
+  90% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.modal-show {
+  display: block;
+  animation-name: bounce;
+  animation-duration: 0.6s;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  z-index: 1;
+}
+
+.modal-overlay-show {
+  display: block;
+}
+
+.modal-close {
+  font-size: 15px;
+  margin-left: 5px;
+  padding-bottom: 4px;
+  color: #26a5f3;
+
+  border: transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+.input-block__wrap {
+  padding: 10px;
+}
+
+.modal-img {
+  margin-top: 10px;
+  margin-left: 10px;
 }

@@ -223,11 +223,40 @@
       </section>
     </aside>
 
-    <section class="add-post add-post--closed">
-      <input type="text" />
-      <button type="button">Post</button>
+    <section class="modal modal-post">
+      <button class="modal-close" type="button">X</button>
+      <div class="modal-wrap">
+        <img class="user-logo modal-img" src="./img/Noize.jpg" alt="User" />
+        <div class="input-block__wrap">
+          <form method="POST" action="">
+            <input
+              type="text"
+              class="message__input"
+              name="post"
+              placeholder="What's new?"
+            />
+            <div class="actions__wrap">
+              <ul class="actions__list">
+                <li class="actions__item">
+                  <i class="icon icon-image"></i>
+                </li>
+                <li class="actions__item icon-16">
+                  <i class="icon icon-gif"></i>
+                </li>
+                <li class="actions__item">
+                  <i class="icon icon-badge-13"></i>
+                </li>
+                <li class="actions__item">
+                  <i class="icon icon-ic_tag_faces_24px"></i>
+                </li>
+              </ul>
+              <button class="admin-main__post button__post">Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </section>
-
-    <script type="module" src="app.js"></script>
+    <div class="modal-overlay"></div>
+    <script type="module" src="./js/admin.js"></script>
   </body>
 </html>
