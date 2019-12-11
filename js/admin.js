@@ -1,45 +1,120 @@
 class Admin {
   constructor() {
-    this.button__post = document.querySelectorAll(".button__post");
+    this.messageForm = document.querySelector(".message__form");
+    this.button__post = document.querySelector(".admin-main__post");
+    this.link__post = document.querySelector(".nav__btn-post");
+
     this.modalPost = document.querySelector(".modal-post");
     this.modalOverlay = document.querySelector(".modal-overlay");
-    this.close = this.modalPost.querySelector(".modal-close");
+    this.modalClose = this.modalPost.querySelector(".modal-close");
 
-    this.post = this.modalPost.querySelector("[name=post]");
-    //this.storage = localStorage.getItem("login");
+    this.post = this.messageForm.querySelector("[name=post]");
+    this.postsList = document.querySelector(".posts__list");
+    this.postID = 0;
   }
 
-  setup() {
-    this.button__post.forEach(item => {
-      item.addEventListener("click", evt => {
-        evt.preventDefault();
+  addPost() {
+    const value = this.post.value;
 
-        this.modalPost.classList.add("modal-show");
-        this.modalOverlay.classList.add("modal-overlay-show");
-        this.modal__textarea.focus();
+    if (value.length) {
+      let post = {
+        id: this.postID,
+        text: value
+      };
+      this.postID++;
+      this.addPostToLocalStorage(post);
+    }
+    this.post.value = "";
+  }
 
-        //   if (storage) {
-        //     login.value = storage;
-        //   }
-      });
+  addPostToLocalStorage(post) {
+    const postsList = this.getPostsFromLocalStorage() || [];
+    postsList.push(post);
+    localStorage.setItem("posts", JSON.stringify(postsList));
+
+    this.displayPosts();
+  }
+
+  getPostsFromLocalStorage() {
+    const JSONposts = localStorage.getItem("posts");
+    const posts = JSON.parse(JSONposts);
+    return posts;
+  }
+
+  displayPosts() {
+    const postsList = this.getPostsFromLocalStorage();
+    postsList.forEach(item => {
+      const markup = this.preparePost(item);
+      this.postsList.insertAdjacentHTML("afterbegin", markup);
     });
 
-    this.close.addEventListener("click", evt => {
-      console.log(this.close);
+    //this.deletePost();
+  }
+
+  preparePost(item) {
+    const markup = `
+    <li class="posts__item" data-id="${item.id}">
+    <img class="user-logo" src="./img/Barak.jpg" alt="User Logo" />
+    <div class="content-wrap">
+      <div class="item__title">
+        <div class="item__title-wrap">
+            <h3 class="item__name">SpaceX</h3>
+            <p class="item__username">@SpaceX</p>
+            <span class="item__time">22h</span>
+        </div>
+        <button type="button" class="item__btn" type="button">Delete</button>
+      </div>
+      <p class="item__desc">
+        ${item.text}
+      </p>      
+      <div class="item__actions-wrap">
+        <ul class="item-actions__list">
+          <li class="item-actions__item">
+            <i class="icon icon-chat icon-16"></i>
+            <span class="count">457</span>
+          </li>
+          <li class="item-actions__item">
+            <i class="icon icon-share icon-16"></i>
+            <span class="count">4.7K</span>
+          </li>
+          <li class="item-actions__item">
+            <i class="icon icon-heart icon-16"></i>
+            <span class="count">457</span>
+          </li>
+          <li class="item-actions__item">
+            <i class="icon icon-upload icon-16"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+    `;
+    return markup;
+  }
+
+  deletePost(id) {
+    //const itemBtn = document.querySelector(".item__btn");
+
+    const item = document.querySelector(`[data-id='${id}']`);
+    if (item) item.parentElement.removeChild(item);
+    //this.displayPosts();
+  }
+
+  showDialog() {
+    this.link__post.addEventListener("click", evt => {
+      evt.preventDefault();
+
+      this.modalPost.classList.add("modal-show");
+      this.modalOverlay.classList.add("modal-overlay-show");
+      this.post.focus();
+    });
+
+    this.modalClose.addEventListener("click", evt => {
       evt.preventDefault();
       this.modalPost.classList.remove("modal-show");
       this.modalOverlay.classList.remove("modal-overlay-show");
       this.modalPost.classList.remove("modal-error");
     });
-
-    // this.form.addEventListener("submit", function(event) {
-    //   if (!login.value || !password.value) {
-    //     event.preventDefault();
-    //     popup.classList.add("modal-error");
-    //   } else {
-    //     localStorage.setItem("login", login.value);
-    //   }
-    // });
 
     window.addEventListener("keydown", evt => {
       if (evt.keyCode === 27) {
@@ -51,9 +126,25 @@ class Admin {
       }
     });
   }
-
-  showDialog() {}
 }
 
-const admin = new Admin();
-admin.setup();
+function eventListeners() {
+  const messageForm = document.querySelector(".message__form");
+  const navPostBtn = document.querySelector(".nav__btn-post");
+
+  const admin = new Admin();
+
+  messageForm.addEventListener("submit", evt => {
+    evt.preventDefault();
+    admin.addPost();
+  });
+
+  navPostBtn.addEventListener("click", evt => {
+    evt.preventDefault();
+    admin.showDialog();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  eventListeners();
+});

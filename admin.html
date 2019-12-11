@@ -54,7 +54,7 @@
             </a>
           </li>
         </ul>
-        <button class="nav__btn-post button__post">Post</button>
+        <button type="button" class="nav__btn-post button__post">Post</button>
       </nav>
     </aside>
 
@@ -64,42 +64,37 @@
       <section class="message">
         <img class="user-logo" src="./img/Noize.jpg" alt="Photo" />
         <div class="message__actions-wrap">
-          <input class="message__input" type="text" placeholder="What's New?" />
-          <div class="actions__wrap">
-            <ul class="actions__list">
-              <li class="actions__item">
-                <i class="icon icon-image"></i>
-              </li>
-              <li class="actions__item icon-16">
-                <i class="icon icon-gif"></i>
-              </li>
-              <li class="actions__item">
-                <i class="icon icon-badge-13"></i>
-              </li>
-              <li class="actions__item">
-                <i class="icon icon-ic_tag_faces_24px"></i>
-              </li>
-            </ul>
-            <button class="admin-main__post button__post">Post</button>
-          </div>
+          <form class="message__form" method="" action="">
+            <input
+              class="message__input"
+              type="text"
+              name="post"
+              placeholder="What's New?"
+            />
+            <div class="actions__wrap">
+              <ul class="actions__list">
+                <li class="actions__item">
+                  <i class="icon icon-image"></i>
+                </li>
+                <li class="actions__item icon-16">
+                  <i class="icon icon-gif"></i>
+                </li>
+                <li class="actions__item">
+                  <i class="icon icon-badge-13"></i>
+                </li>
+                <li class="actions__item">
+                  <i class="icon icon-ic_tag_faces_24px"></i>
+                </li>
+              </ul>
+              <button class="admin-main__post button__post">Post</button>
+            </div>
+          </form>
         </div>
       </section>
 
       <section class="posts">
         <ul class="posts__list">
-          <li class="posts__item">
-            <img class="user-logo" src="./img/Barak.jpg" alt="User Logo" />
-            <div class="content-wrap">
-              <div class="item__title">
-                <h3 class="item__name">SpaceX</h3>
-                <p class="item__username">@SpaceX</p>
-                <span class="item__time">22h</span>
-              </div>
-              <p class="item__desc">
-                Falcon 9 lands on the Of Course I Still Love You droneship after
-                delivering Dragon to orbit
-              </p>
-              <div class="item__img">
+          <!-- <div class="item__img">
                 <img
                   class="item__photo"
                   width="255px"
@@ -114,78 +109,7 @@
                   src="./img/Falcon2.jfif"
                   alt="Falcon2"
                 />
-              </div>
-              <div class="item__actions-wrap">
-                <ul class="item-actions__list">
-                  <li class="item-actions__item">
-                    <i class="icon icon-chat icon-16"></i>
-                    <span class="count">457</span>
-                  </li>
-                  <li class="item-actions__item">
-                    <i class="icon icon-share icon-16"></i>
-                    <span class="count">4.7K</span>
-                  </li>
-                  <li class="item-actions__item">
-                    <i class="icon icon-heart icon-16"></i>
-                    <span class="count">457</span>
-                  </li>
-                  <li class="item-actions__item">
-                    <i class="icon icon-upload icon-16"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-
-          <li class="posts__item">
-            <img class="user-logo" src="./img/Barak.jpg" alt="User Logo" />
-            <div class="content-wrap">
-              <div class="item__title">
-                <h3 class="item__name">SpaceX</h3>
-                <p class="item__username">@SpaceX</p>
-                <span class="item__time">22h</span>
-              </div>
-              <p class="item__desc">
-                Falcon 9 lands on the Of Course I Still Love You droneship after
-                delivering Dragon to orbit
-              </p>
-              <div class="item__img">
-                <img
-                  class="item__photo"
-                  width="255px"
-                  height="300px"
-                  src="./img/Falcon.jfif"
-                  alt="Falcon"
-                />
-                <img
-                  class="item__photo"
-                  width="255px"
-                  height="300px"
-                  src="./img/Falcon2.jfif"
-                  alt="Falcon2"
-                />
-              </div>
-              <div class="item__actions-wrap">
-                <ul class="item-actions__list">
-                  <li class="item-actions__item">
-                    <i class="icon icon-chat icon-16"></i>
-                    <span class="count">457</span>
-                  </li>
-                  <li class="item-actions__item">
-                    <i class="icon icon-share icon-16"></i>
-                    <span class="count">4.7K</span>
-                  </li>
-                  <li class="item-actions__item">
-                    <i class="icon icon-heart icon-16"></i>
-                    <span class="count">457</span>
-                  </li>
-                  <li class="item-actions__item">
-                    <i class="icon icon-upload icon-16"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
+              </div> -->
         </ul>
       </section>
     </main>
@@ -228,7 +152,7 @@
       <div class="modal-wrap">
         <img class="user-logo modal-img" src="./img/Noize.jpg" alt="User" />
         <div class="input-block__wrap">
-          <form method="POST" action="">
+          <form class="message__form" method="" action="">
             <input
               type="text"
               class="message__input"

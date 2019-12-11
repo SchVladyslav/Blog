@@ -152,13 +152,18 @@
 }
 
 .posts__item:hover {
-  background-color: #e8f5fe;
+  background-color: #f5f8fa;
 }
 
 .item__title,
+.item__title-wrap,
 .item__img,
 .item__actions {
   display: flex;
+}
+
+.item__title {
+  justify-content: space-between;
 }
 
 .item__name,
@@ -182,6 +187,17 @@
   left: -7px;
 
   font-size: 16px;
+}
+
+.item__btn {
+  margin-right: 10px;
+  color: #26a5f3;
+
+  border: none;
+  background: transparent;
+
+  outline: none;
+  cursor: pointer;
 }
 
 .item__desc {
@@ -354,6 +370,7 @@
   cursor: pointer;
 }
 
+.item__btn:hover,
 .follow__link:hover {
   color: #1a91da;
 }
