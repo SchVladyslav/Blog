@@ -4,11 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>User</title>
   </head>
-  <body>
-    <header class="header">
-      <a class="header__logout">Log Out</a>
-    </header>
+  <body class="admin">
+    <aside class="aside-nav">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link">
+              <i class="icon icon-home-52"></i>
+              Home
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link">
+              <i class="icon icon-zoom-2"></i>
+              Explore
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link">
+              <i class="icon icon-bell-53"></i>
+              Notifications
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link">
+              <i class="icon icon-email-84"></i>
+              Messages
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link">
+              <i class="icon icon-bookmark-2"></i>
+              Bookmarks
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link">
+              <i class="icon icon-ic_filter_list_24px"></i>
+              Lists
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link">
+              <i class="icon icon-single-01"></i>
+              Profile
+            </a>
+          </li>
+        </ul>
+        <button type="button" class="nav__btn-post button__post" disabled>
+          Post
+        </button>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-main__title-wrap">
+        <h1 class="admin-main__title">Home</h1>
+        <button class="admin-main__logout">Log out</button>
+      </div>
+      <section class="message">
+        <img class="user-logo" src="./img/Barak.jpg" alt="Photo" />
+        <div class="message__actions-wrap">
+          <form class="message__form" method="" action="">
+            <input
+              class="message__input"
+              type="text"
+              name="post"
+              placeholder="What's New?"
+            />
+            <div class="actions__wrap">
+              <ul class="actions__list">
+                <li class="actions__item">
+                  <i class="icon icon-image"></i>
+                </li>
+                <li class="actions__item icon-16">
+                  <i class="icon icon-gif"></i>
+                </li>
+                <li class="actions__item">
+                  <i class="icon icon-badge-13"></i>
+                </li>
+                <li class="actions__item">
+                  <i class="icon icon-ic_tag_faces_24px"></i>
+                </li>
+              </ul>
+              <button class="admin-main__post button__post" disabled>
+                Post
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="posts">
+        <ul class="posts__list"></ul>
+      </section>
+    </main>
+
+    <aside class="suggestions">
+      <section class="suggestions__follow follow">
+        <h2 class="follow__title">Who To Follow</h2>
+        <ul class="follow__list">
+          <li class="follow__item">
+            <img class="follow__img" src="./img/Barak.jpg" alt="User" />
+            <div class="follow__names-wrap">
+              <h3 class="follow__name">Barack obama</h3>
+              <p class="follow__username">@BarackObama</p>
+            </div>
+            <button class="follow__btn" href="#">Follow</button>
+          </li>
+          <li class="follow__item">
+            <img class="follow__img" src="./img/Noize.jpg" alt="User" />
+            <div class="follow__names-wrap">
+              <h3 class="follow__name">Shchetyna Vladyslav</h3>
+              <p class="follow__username">@ShchVl</p>
+            </div>
+            <button class="follow__btn" href="#">Follow</button>
+          </li>
+          <li class="follow__item">
+            <img class="follow__img" src="./img/nix.jpg" alt="User" />
+            <div class="follow__names-wrap">
+              <h3 class="follow__name">Nix solutions</h3>
+              <p class="follow__username">@nix</p>
+            </div>
+            <button class="follow__btn" href="#">Follow</button>
+          </li>
+        </ul>
+        <a class="follow__link">Show more</a>
+      </section>
+    </aside>
+
+    <script type="module" src="./js/models/user.js"></script>
   </body>
 </html>
