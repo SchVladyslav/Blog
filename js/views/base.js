@@ -23,5 +23,6 @@ export const logInData = {
   userEmail: "user@gmail.com",
   userPass: "22222222",
   adminEmail: "admin@gmail.com",
-  adminPass: "11111111"
+  adminPass: "11111111",
+  login: "/login.html"
 };

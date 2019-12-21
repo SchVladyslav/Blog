@@ -4,8 +4,8 @@ class Login {
   constructor() {
     this.MIN_EMAIL_LEN = 5;
     this.MIN_PASS_LEN = 8;
-    this.ADMIN_PAGE = "http://127.0.0.1:5500/admin.html";
-    this.USER_PAGE = "http://127.0.0.1:5500/user.html";
+    this.ADMIN_PAGE = "/admin.html";
+    this.USER_PAGE = "/user.html";
   }
 
   init() {
@@ -53,9 +53,11 @@ class Login {
       const pass = elements.password.value;
 
       if (email === logInData.adminEmail && pass === logInData.adminPass) {
-        window.location.href = this.ADMIN_PAGE;
+        //addRoleToLocalStorage(email, pass);
+        window.location.pathname = this.ADMIN_PAGE;
       } else if (email === logInData.userEmail && pass === logInData.userPass) {
-        window.location.href = this.USER_PAGE;
+        //addRoleToLocalStorage(email, pass);
+        window.location.pathname = this.USER_PAGE;
       } else {
         this.showErrorMessage();
         elements.password.value = "";
@@ -63,6 +65,10 @@ class Login {
       }
     });
   }
+
+  // addRoleToLocalStorage(email, pass) {
+  //   localStorage.setItem("logged", JSON.stringify());
+  // }
 
   showErrorMessage() {
     const message =
